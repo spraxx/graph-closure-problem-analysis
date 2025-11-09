@@ -1,19 +1,21 @@
 import networkx as nx
 import os
 import pandas as pd
-from tqdm import tqdm  # For a nice progress bar
+from tqdm import tqdm
 
 import algorithms
 
-# --- CONFIGURATION ---
+
 STUDENT_ID = 130449
 
-GRAPH_DIR = "graphs"
-RESULTS_DIR = "results"
+SCRIPT_DIR = os.path.dirname(os.path.abspath(__file__))
+PROJECT_ROOT = os.path.abspath(os.path.join(SCRIPT_DIR, ".."))
+
+GRAPH_DIR = os.path.join(PROJECT_ROOT, "graphs")
+RESULTS_DIR = os.path.join(PROJECT_ROOT, "results")
 RESULTS_FILE = os.path.join(RESULTS_DIR, "results.csv")
-MAX_VERTICES = 15 # Must match graph_generator.py
+MAX_VERTICES = 16
 DENSITIES = [0.125, 0.25, 0.50, 0.75]
-# --- END CONFIGURATION ---
 
 def main():
     if not os.path.exists(RESULTS_DIR):
@@ -63,7 +65,6 @@ def main():
             if ex_found:
                 recall = 1.0 if gr_found else 0.0
 
-            # Store results
             results_data.append({
                 "n": n,
                 "k": k,
@@ -80,7 +81,6 @@ def main():
                 "heuristic_recall": recall
             })
 
-    # Save all results to a CSV file
     df = pd.DataFrame(results_data)
     df.to_csv(RESULTS_FILE, index=False)
     

@@ -6,13 +6,16 @@ import math
 
 # --- CONFIGURATION ---
 STUDENT_ID = 130449
-MIN_DIST = 5.0  # Min distance between vertices
+MIN_DIST = 5.0
 COORD_MIN = 1
 COORD_MAX = 500
-MAX_VERTICES = 15  # Max number of vertices to generate graphs for (exhaustive search gets slow!)
+MAX_VERTICES = 16
 DENSITIES = [0.125, 0.25, 0.50, 0.75]
-GRAPH_DIR = "graphs"
-# --- END CONFIGURATION ---
+
+SCRIPT_DIR = os.path.dirname(os.path.abspath(__file__))
+PROJECT_ROOT = os.path.abspath(os.path.join(SCRIPT_DIR, ".."))
+
+GRAPH_DIR = os.path.join(PROJECT_ROOT, "graphs")
 
 def set_seed(seed):
     """Sets the random seed for all necessary libraries."""
@@ -35,12 +38,10 @@ def generate_vertices(n):
         y = random.randint(COORD_MIN, COORD_MAX)
         new_point = (x, y)
 
-        # Check for coincidence
         if new_point in points:
             attempts += 1
             continue
 
-        # Check for proximity
         is_too_close = False
         for p in points:
             if get_dist(new_point, p) < MIN_DIST:
@@ -60,7 +61,7 @@ def generate_vertices(n):
 def generate_graphs(n, vertices):
     """Generates graphs for a given n and set of vertices at different densities."""
     graphs = []
-    max_edges = n * (n - 1) # Max edges in a directed graph with no self-loops
+    max_edges = n * (n - 1)
     nodes = list(vertices)
 
     for density in DENSITIES:

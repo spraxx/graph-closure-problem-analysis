@@ -23,27 +23,25 @@ A closure is a set of vertices C, such that no edges leave C (i.e., for every no
     pip install -r requirements.txt
     ```
 
-2.  **Edit Student Number:**
-    Open `graph_generator.py` and `experiment_runner.py` and change the `YOUR_STUDENT_NUMBER` placeholder to your actual student number.
-
-3.  **Create Directories:**
+2.  **Create Directories:**
+    (Se não existirem)
     ```bash
     mkdir graphs
     mkdir results
     ```
 
-4.  **Generate Graphs:**
+3.  **Generate Graphs:**
     This will generate graphs for `n = 4` to `n = 15`. You can adjust the `MAX_VERTICES` variable inside the script to generate more.
     ```bash
-    python graph_generator.py
+    python src/graph_generator.py
     ```
 
-5.  **Run Experiments:**
+4.  **Run Experiments:**
     This will run the algorithms on the generated graphs and save the data to `results/results.csv`. This will take time, especially for the exhaustive search on larger graphs.
     ```bash
-    python experiment_runner.py
+    python src/experiment_runner.py
     ```
 
-6.  **Complete Analysis:**
-    Open `analysis_report.md`. It already contains the formal complexity analysis. Use the `results/results.csv` file (e.g., by opening it in Excel or using a tool like Pandas/Matplotlib) to create plots and fill in the sections for your experimental analysis (b, c, d, e).
+5.  **Complete Analysis:**
+    Open `analysis_report.md`. Use the `results/results.csv` file (ou o Jupyter Notebook `analise_resultados.ipynb`) to create plots and fill in the sections for your experimental analysis (b, c, d, e).
 ```
