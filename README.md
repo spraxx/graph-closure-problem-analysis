@@ -41,7 +41,11 @@ A closure is a set of vertices C, such that no edges leave C (i.e., for every no
     ```bash
     python src/experiment_runner.py
     ```
-
-5.  **Complete Analysis:**
+5. **Experiment 2: Large Dese Graphs (Greedy Only)**
+    This runs the supplemental test on the Greedy algorithm for n up to 5000+ to test its worst-case performance
+    ```bash
+    python src/test_large_greedy.py
+    ```
+6.  **Complete Analysis:**
     Open `analysis_report.md`. Use the `results/results.csv` file (ou o Jupyter Notebook `analise_resultados.ipynb`) to create plots and fill in the sections for your experimental analysis (b, c, d, e).
 ```
